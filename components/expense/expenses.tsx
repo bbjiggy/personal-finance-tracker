@@ -77,13 +77,13 @@ export default function Expenses() {
               placeholder="🔍 Search expenses..."
               value={filterText}
               onChange={(e) => setFilterText(e.target.value)}
-              className="px-5 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 dark:bg-gray-700/50 dark:text-white transition-all duration-200 backdrop-blur-sm"
+              className="px-5 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-gray-800 dark:border-gray-200 dark:bg-gray-700/50 dark:text-white transition-all duration-200 backdrop-blur-sm"
             />
             
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="px-5 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 dark:bg-gray-700/50 dark:text-white transition-all duration-200 backdrop-blur-sm"
+              className="px-5 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-gray-800 dark:border-gray-200 dark:bg-gray-700/50 dark:text-white transition-all duration-200 backdrop-blur-sm"
             >
               <option value="all">📂 All Categories</option>
               {categories.map(cat => (
@@ -94,7 +94,7 @@ export default function Expenses() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as 'date' | 'amount')}
-              className="px-5 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 dark:bg-gray-700/50 dark:text-white transition-all duration-200 backdrop-blur-sm"
+              className="px-5 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-gray-800 dark:border-gray-200 dark:bg-gray-700/50 dark:text-white transition-all duration-200 backdrop-blur-sm"
             >
               <option value="date">📅 Sort by Date</option>
               <option value="amount">💰 Sort by Amount</option>
@@ -108,7 +108,7 @@ export default function Expenses() {
                 type="date"
                 value={dateFrom}
                 onChange={(e) => setDateFrom(e.target.value)}
-                className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 dark:bg-gray-700/50 dark:text-white transition-all duration-200 backdrop-blur-sm"
+                className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-gray-800 dark:border-gray-200 dark:bg-gray-700/50 dark:text-white transition-all duration-200 backdrop-blur-sm"
               />
             </div>
             <div>
@@ -117,7 +117,7 @@ export default function Expenses() {
                 type="date"
                 value={dateTo}
                 onChange={(e) => setDateTo(e.target.value)}
-                className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 dark:bg-gray-700/50 dark:text-white transition-all duration-200 backdrop-blur-sm"
+                className="w-full px-5 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-gray-800 dark:border-gray-200 dark:bg-gray-700/50 dark:text-white transition-all duration-200 backdrop-blur-sm"
               />
             </div>
           </div>
@@ -137,10 +137,10 @@ export default function Expenses() {
             {sortedExpenses.map((expense, index) => (
               <div
                 key={expense.id}
-                className="group relative transaction-card p-6 bg-gradient-to-br from-white to-gray-50 dark:from-gray-700 dark:to-gray-800 rounded-2xl border-l-4 border-red-500 shadow-lg hover:shadow-2xl hover:shadow-red-500/20 animate-slideIn"
+                className="group relative transaction-card p-6 bg-gradient-to-br from-white to-gray-50 dark:from-gray-700 dark:to-gray-800 rounded-2xl border-l-4 border-gray-800 dark:border-gray-200 shadow-lg hover:shadow-2xl hover:shadow-gray-800/20 dark:hover:shadow-gray-200/20 animate-slideIn"
                 style={{animationDelay: `${index * 0.05}s`}}
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/5 rounded-full -mr-16 -mt-16 group-hover:bg-red-500/10 transition-all duration-300"></div>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gray-800/5 dark:bg-gray-200/5 rounded-full -mr-16 -mt-16 group-hover:bg-gray-800/10 dark:bg-gray-200/10 transition-all duration-300"></div>
                 
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                   <div className="flex-1 relative z-10">
@@ -149,11 +149,11 @@ export default function Expenses() {
                         <h3 className="font-bold text-xl text-gray-800 dark:text-white mb-2">
                           {expense.title}
                         </h3>
-                        <span className="inline-block text-xs font-bold bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 py-1.5 rounded-full shadow-md">
+                        <span className="inline-block text-xs font-bold bg-gradient-to-r from-gray-800 to-gray-900 dark:from-gray-200 dark:to-gray-100 text-white px-3 py-1.5 rounded-full shadow-md">
                           {expense.category}
                         </span>
                       </div>
-                      <span className="text-red-600 dark:text-red-400 font-bold text-2xl whitespace-nowrap">
+                      <span className="text-gray-900 dark:text-gray-100 font-bold text-2xl whitespace-nowrap">
                         -${expense.price.toFixed(2)}
                       </span>
                     </div>
@@ -199,7 +199,7 @@ export default function Expenses() {
                     </button>
                     <button
                       onClick={() => handleDelete(expense.id)}
-                      className="px-5 py-2.5 bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white rounded-xl transition-all duration-300 transform hover:scale-105 text-sm font-bold shadow-lg hover:shadow-red-500/50"
+                      className="px-5 py-2.5 bg-gradient-to-r from-gray-800 to-gray-900 dark:from-gray-200 dark:to-gray-100 hover:from-gray-900 hover:to-black dark:hover:from-gray-100 dark:hover:to-white text-white rounded-xl transition-all duration-300 transform hover:scale-105 text-sm font-bold shadow-lg hover:shadow-gray-800/50 dark:shadow-gray-200/50"
                     >
                       🗑️ Delete
                     </button>
@@ -212,11 +212,11 @@ export default function Expenses() {
 
         {sortedExpenses.length > 0 && (
           <div className="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-600 animate-fadeIn">
-            <div className="flex justify-between items-center bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 p-6 rounded-2xl">
+            <div className="flex justify-between items-center bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl">
               <span className="text-gray-700 dark:text-gray-300 font-bold text-lg">
                 💸 Total Expenses ({sortedExpenses.length}):
               </span>
-              <span className="text-3xl font-bold text-red-600 dark:text-red-400">
+              <span className="text-3xl font-bold text-gray-900 dark:text-gray-100">
                 ${sortedExpenses.reduce((sum, e) => sum + e.price, 0).toFixed(2)}
               </span>
             </div>

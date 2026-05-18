@@ -298,8 +298,8 @@ export default function Modal({ isOpen, setOpen, type, editTransaction }: ModalP
             onClick={handleSubmit}
             className={`flex-1 px-6 py-4 font-bold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg ${
               type === 'expense'
-                ? 'bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white hover:shadow-red-500/50'
-                : 'bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white hover:shadow-green-500/50'
+                ? 'bg-gradient-to-r from-gray-800 to-gray-900 dark:from-gray-200 dark:to-gray-100 hover:from-gray-900 hover:to-black dark:hover:from-gray-100 dark:hover:to-white text-white hover:shadow-gray-800/50 dark:shadow-gray-200/50'
+                : 'bg-gradient-to-r from-gray-700 to-gray-800 dark:from-gray-300 dark:to-gray-200 hover:from-gray-800 hover:to-gray-900 dark:hover:from-gray-200 dark:hover:to-gray-100 text-white hover:shadow-gray-700/50 dark:shadow-gray-300/50'
             }`}
           >
             {editTransaction ? '✓ Update' : '+ Create'}

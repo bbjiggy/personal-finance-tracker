@@ -20,13 +20,13 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 page-transition">
+    <div className="min-h-screen bg-white dark:bg-black page-transition">
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
       
       <main className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Welcome Section */}
         <div className="mb-8 animate-fadeIn">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+          <h1 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-2">
             Financial Dashboard
           </h1>
           <p className="text-gray-600 dark:text-gray-400 text-lg">
@@ -44,12 +44,10 @@ export default function HomePage() {
           <div className="lg:col-span-2 animate-fadeIn">
             <button
               onClick={handleExport}
-              className="group relative w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold rounded-xl shadow-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-purple-500/50 flex items-center justify-center gap-3 overflow-hidden"
+              className="group relative w-full sm:w-auto px-8 py-4 bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-200 text-white dark:text-black font-bold rounded-xl shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3"
             >
-              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-purple-400 to-pink-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
               <span className="text-2xl">📥</span>
               <span className="relative z-10">Export to CSV</span>
-              <span className="absolute right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
             </button>
           </div>
           
@@ -65,10 +63,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Footer */}
-        <footer className="mt-12 text-center text-gray-500 dark:text-gray-400 text-sm animate-fadeIn">
-          <p>Made with ❤️ for better financial management</p>
-        </footer>
+        {/* Footer removed */}
       </main>
     </div>
   );

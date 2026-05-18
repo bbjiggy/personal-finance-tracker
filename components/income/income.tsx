@@ -131,7 +131,7 @@ export default function Income() {
             {sortedIncomes.map((income) => (
               <div
                 key={income.id}
-                className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:shadow-md transition-shadow border-l-4 border-green-500"
+                className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:shadow-md transition-shadow border-l-4 border-gray-800 dark:border-gray-200"
               >
                 <div className="flex-1">
                   <div className="flex items-start justify-between gap-2">
@@ -139,11 +139,11 @@ export default function Income() {
                       <h3 className="font-semibold text-lg text-gray-800 dark:text-white">
                         {income.title}
                       </h3>
-                      <span className="text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">
+                      <span className="text-xs bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-2 py-1 rounded-full">
                         {income.category}
                       </span>
                     </div>
-                    <span className="text-green-600 dark:text-green-400 font-bold text-lg whitespace-nowrap">
+                    <span className="text-gray-900 dark:text-gray-100 font-bold text-lg whitespace-nowrap">
                       +${income.price.toFixed(2)}
                     </span>
                   </div>
@@ -204,7 +204,7 @@ export default function Income() {
               <span className="text-gray-600 dark:text-gray-400 font-medium">
                 Total Income ({sortedIncomes.length}):
               </span>
-              <span className="text-2xl font-bold text-green-600 dark:text-green-400">
+              <span className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                 ${sortedIncomes.reduce((sum, i) => sum + i.price, 0).toFixed(2)}
               </span>
             </div>
