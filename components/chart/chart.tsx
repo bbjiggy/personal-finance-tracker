@@ -224,7 +224,7 @@ export default function Chart() {
         </button>
       </div>
 
-      <Modal isOpen={isOpen} setOpen={setOpen} type={modalType} />
+      <Modal isOpen={isOpen} setOpen={setOpen} type={modalType} editTransaction={null} />
     </div>
   );
 }

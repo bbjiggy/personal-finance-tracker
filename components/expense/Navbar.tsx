@@ -6,8 +6,8 @@ import { setUsername } from "@/redux/userSlice";
 import { useState } from "react";
 
 interface NavbarProps {
-  activeTab: 'expense' | 'income';
-  setActiveTab: (tab: 'expense' | 'income') => void;
+  activeTab: 'expense' | 'income' | 'budget';
+  setActiveTab: (tab: 'expense' | 'income' | 'budget') => void;
 }
 
 export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
@@ -57,6 +57,17 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
             >
               <span className="hidden sm:inline">Income</span>
               <span className="sm:hidden">💵</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('budget')}
+              className={`px-3 md:px-6 py-2 rounded-lg font-semibold transition-all duration-200 ${
+                activeTab === 'budget'
+                  ? 'bg-blue-500 text-white shadow-lg'
+                  : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+              }`}
+            >
+              <span className="hidden sm:inline">Budget</span>
+              <span className="sm:hidden">💰</span>
             </button>
           </div>
 
