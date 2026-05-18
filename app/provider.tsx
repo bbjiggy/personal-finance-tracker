@@ -11,7 +11,7 @@ interface ProviderProps{
 export default function Providers({children}: ProviderProps){
     return (
         <Provider store={store}>
-            <PersistGate persistor={persist_store}>
+            <PersistGate loading={<div className="min-h-screen flex items-center justify-center">Loading...</div>} persistor={persist_store}>
                 {children}
             </PersistGate>
         </Provider>
