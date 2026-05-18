@@ -198,39 +198,28 @@ export default function Chart() {
     <div className="space-y-6">
       {/* Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <div className="group relative overflow-hidden bg-gradient-to-br from-gray-900 to-black dark:from-gray-100 dark:to-white rounded-2xl p-6 text-white shadow-2xl hover:shadow-gray-900/50 dark:hover:shadow-gray-100/50 transition-all duration-300 transform hover:scale-105 animate-slideIn">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
+        <div className="group relative overflow-hidden bg-white dark:bg-gray-900 rounded-2xl p-8 text-gray-900 dark:text-white shadow-xl border-2 border-gray-200 dark:border-gray-700 hover:border-gray-900 dark:hover:border-white transition-all duration-300 transform hover:scale-105 animate-slideIn">
           <div className="relative z-10">
-            <p className="text-sm opacity-90 mb-2 font-semibold">💵 Total Income</p>
-            <p className="text-4xl font-bold number-animate">${totalIncome.toFixed(2)}</p>
+            <p className="text-sm font-bold mb-3 text-gray-600 dark:text-gray-400 uppercase tracking-wider">💵 Total Income</p>
+            <p className="text-5xl font-black number-animate">${totalIncome.toFixed(2)}</p>
           </div>
-          <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-gray-600 to-gray-700 dark:from-gray-400 dark:to-gray-300"></div>
+          <div className="absolute bottom-0 right-0 text-9xl opacity-5 font-black">💵</div>
         </div>
         
-        <div className="group relative overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-200 dark:to-gray-100 rounded-2xl p-6 text-white shadow-2xl hover:shadow-gray-800/50 dark:hover:shadow-gray-200/50 transition-all duration-300 transform hover:scale-105 animate-slideIn" style={{animationDelay: '0.1s'}}>
-          <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
+        <div className="group relative overflow-hidden bg-white dark:bg-gray-900 rounded-2xl p-8 text-gray-900 dark:text-white shadow-xl border-2 border-gray-200 dark:border-gray-700 hover:border-gray-900 dark:hover:border-white transition-all duration-300 transform hover:scale-105 animate-slideIn" style={{animationDelay: '0.1s'}}>
           <div className="relative z-10">
-            <p className="text-sm opacity-90 mb-2 font-semibold">💸 Total Expenses</p>
-            <p className="text-4xl font-bold number-animate">${totalExpense.toFixed(2)}</p>
+            <p className="text-sm font-bold mb-3 text-gray-600 dark:text-gray-400 uppercase tracking-wider">💸 Total Expenses</p>
+            <p className="text-5xl font-black number-animate">${totalExpense.toFixed(2)}</p>
           </div>
-          <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-gray-500 to-gray-600 dark:from-gray-500 dark:to-gray-400"></div>
+          <div className="absolute bottom-0 right-0 text-9xl opacity-5 font-black">💸</div>
         </div>
         
-        <div className={`group relative overflow-hidden rounded-2xl p-6 text-white shadow-2xl transition-all duration-300 transform hover:scale-105 animate-slideIn ${
-          balance >= 0 
-            ? 'bg-gradient-to-br from-gray-700 to-gray-800 dark:from-gray-300 dark:to-gray-200 hover:shadow-gray-700/50 dark:hover:shadow-gray-300/50' 
-            : 'bg-gradient-to-br from-gray-600 to-gray-700 dark:from-gray-400 dark:to-gray-300 hover:shadow-gray-600/50 dark:hover:shadow-gray-400/50'
-        }`} style={{animationDelay: '0.2s'}}>
-          <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
+        <div className="group relative overflow-hidden bg-white dark:bg-gray-900 rounded-2xl p-8 text-gray-900 dark:text-white shadow-xl border-2 border-gray-200 dark:border-gray-700 hover:border-gray-900 dark:hover:border-white transition-all duration-300 transform hover:scale-105 animate-slideIn" style={{animationDelay: '0.2s'}}>
           <div className="relative z-10">
-            <p className="text-sm opacity-90 mb-2 font-semibold">💰 Balance</p>
-            <p className="text-4xl font-bold number-animate">${balance.toFixed(2)}</p>
+            <p className="text-sm font-bold mb-3 text-gray-600 dark:text-gray-400 uppercase tracking-wider">💰 Balance</p>
+            <p className="text-5xl font-black number-animate">${balance.toFixed(2)}</p>
           </div>
-          <div className={`absolute bottom-0 left-0 w-full h-1 ${
-            balance >= 0 
-              ? 'bg-gradient-to-r from-gray-400 to-gray-500 dark:from-gray-600 dark:to-gray-500' 
-              : 'bg-gradient-to-r from-gray-300 to-gray-400 dark:from-gray-700 dark:to-gray-600'
-          }`}></div>
+          <div className="absolute bottom-0 right-0 text-9xl opacity-5 font-black">💰</div>
         </div>
       </div>
 
@@ -251,7 +240,7 @@ export default function Chart() {
                 onClick={() => setChartView('overview')}
                 className={`px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 ${
                   chartView === 'overview'
-                    ? 'bg-gradient-to-r from-black to-gray-900 dark:from-white dark:to-gray-100 text-white shadow-lg shadow-black/50 dark:shadow-white/50'
+                    ? 'bg-black dark:bg-white dark:from-white dark:to-gray-100 text-white shadow-lg shadow-black/50 dark:shadow-white/50'
                     : 'text-gray-700 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-600'
                 }`}
               >
@@ -261,7 +250,7 @@ export default function Chart() {
                 onClick={() => setChartView('categories')}
                 className={`px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 ${
                   chartView === 'categories'
-                    ? 'bg-gradient-to-r from-black to-gray-900 dark:from-white dark:to-gray-100 text-white shadow-lg shadow-black/50 dark:shadow-white/50'
+                    ? 'bg-black dark:bg-white dark:from-white dark:to-gray-100 text-white shadow-lg shadow-black/50 dark:shadow-white/50'
                     : 'text-gray-700 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-600'
                 }`}
               >
@@ -277,7 +266,7 @@ export default function Chart() {
                     onClick={() => setTimeFrame(frame)}
                     className={`px-4 py-2.5 rounded-lg text-sm font-bold capitalize transition-all duration-300 ${
                       timeFrame === frame
-                        ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-500/50'
+                        ? 'bg-black dark:bg-white text-white shadow-lg shadow-blue-500/50'
                         : 'text-gray-700 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-600'
                     }`}
                   >
@@ -381,9 +370,9 @@ export default function Chart() {
       <div className="flex flex-col sm:flex-row gap-4 animate-fadeIn">
         <button
           onClick={() => addTransaction('expense')}
-          className="group relative flex-1 bg-gradient-to-r from-gray-800 to-gray-900 dark:from-gray-200 dark:to-gray-100 hover:from-gray-900 hover:to-black dark:hover:from-gray-100 dark:hover:to-white text-white font-bold py-4 px-8 rounded-xl shadow-2xl hover:shadow-gray-800/50 dark:hover:shadow-gray-200/50 transition-all duration-300 transform hover:scale-105 overflow-hidden"
+          className="group relative flex-1 bg-black dark:bg-white dark:from-gray-200 dark:to-gray-100 hover:from-gray-900 hover:to-black dark:hover:from-gray-100 dark:hover:to-white text-white font-bold py-4 px-8 rounded-xl shadow-2xl hover:shadow-gray-800/50 dark:hover:shadow-gray-200/50 transition-all duration-300 transform hover:scale-105 overflow-hidden"
         >
-          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-red-400 to-pink-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+          <span className="absolute inset-0 w-full h-full bg-black dark:bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
           <span className="relative z-10 flex items-center justify-center gap-2 text-lg">
             <span className="text-2xl">💸</span>
             Add Expense
@@ -391,9 +380,9 @@ export default function Chart() {
         </button>
         <button
           onClick={() => addTransaction('income')}
-          className="group relative flex-1 bg-gradient-to-r from-gray-700 to-gray-800 dark:from-gray-300 dark:to-gray-200 hover:from-gray-800 hover:to-gray-900 dark:hover:from-gray-200 dark:hover:to-gray-100 text-white font-bold py-4 px-8 rounded-xl shadow-2xl hover:shadow-gray-900/50 dark:hover:shadow-gray-100/50 transition-all duration-300 transform hover:scale-105 overflow-hidden"
+          className="group relative flex-1 bg-black dark:bg-white dark:from-gray-300 dark:to-gray-200 hover:from-gray-800 hover:to-gray-900 dark:hover:from-gray-200 dark:hover:to-gray-100 text-white font-bold py-4 px-8 rounded-xl shadow-2xl hover:shadow-gray-900/50 dark:hover:shadow-gray-100/50 transition-all duration-300 transform hover:scale-105 overflow-hidden"
         >
-          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-green-400 to-emerald-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+          <span className="absolute inset-0 w-full h-full bg-black dark:bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
           <span className="relative z-10 flex items-center justify-center gap-2 text-lg">
             <span className="text-2xl">💵</span>
             Add Income

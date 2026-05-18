@@ -137,7 +137,7 @@ export default function Expenses() {
             {sortedExpenses.map((expense, index) => (
               <div
                 key={expense.id}
-                className="group relative transaction-card p-6 bg-gradient-to-br from-white to-gray-50 dark:from-gray-700 dark:to-gray-800 rounded-2xl border-l-4 border-gray-800 dark:border-gray-200 shadow-lg hover:shadow-2xl hover:shadow-gray-800/20 dark:hover:shadow-gray-200/20 animate-slideIn"
+                className="group relative transaction-card p-6 bg-white dark:bg-gray-900 dark:from-gray-700 dark:to-gray-800 rounded-2xl border-l-4 border-gray-800 dark:border-gray-200 shadow-lg hover:shadow-2xl hover:shadow-gray-800/20 dark:hover:shadow-gray-200/20 animate-slideIn"
                 style={{animationDelay: `${index * 0.05}s`}}
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gray-800/5 dark:bg-gray-200/5 rounded-full -mr-16 -mt-16 group-hover:bg-gray-800/10 dark:bg-gray-200/10 transition-all duration-300"></div>
@@ -149,7 +149,7 @@ export default function Expenses() {
                         <h3 className="font-bold text-xl text-gray-800 dark:text-white mb-2">
                           {expense.title}
                         </h3>
-                        <span className="inline-block text-xs font-bold bg-gradient-to-r from-gray-800 to-gray-900 dark:from-gray-200 dark:to-gray-100 text-white px-3 py-1.5 rounded-full shadow-md">
+                        <span className="inline-block text-xs font-bold bg-black dark:bg-white dark:from-gray-200 dark:to-gray-100 text-white px-3 py-1.5 rounded-full shadow-md">
                           {expense.category}
                         </span>
                       </div>
@@ -184,7 +184,7 @@ export default function Expenses() {
                         })}
                       </p>
                       {expense.isRecurring && (
-                        <span className="text-xs bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-3 py-1 rounded-full font-bold shadow-md">
+                        <span className="text-xs bg-black dark:bg-white text-white px-3 py-1 rounded-full font-bold shadow-md">
                           🔄 {expense.recurringFrequency}
                         </span>
                       )}
@@ -193,13 +193,13 @@ export default function Expenses() {
                   <div className="flex gap-3 relative z-10">
                     <button
                       onClick={() => handleEdit(expense)}
-                      className="px-5 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded-xl transition-all duration-300 transform hover:scale-105 text-sm font-bold shadow-lg hover:shadow-blue-500/50"
+                      className="px-5 py-2.5 bg-black dark:bg-white hover:from-blue-600 hover:to-cyan-600 text-white rounded-xl transition-all duration-300 transform hover:scale-105 text-sm font-bold shadow-lg hover:shadow-blue-500/50"
                     >
                       ✏️ Edit
                     </button>
                     <button
                       onClick={() => handleDelete(expense.id)}
-                      className="px-5 py-2.5 bg-gradient-to-r from-gray-800 to-gray-900 dark:from-gray-200 dark:to-gray-100 hover:from-gray-900 hover:to-black dark:hover:from-gray-100 dark:hover:to-white text-white rounded-xl transition-all duration-300 transform hover:scale-105 text-sm font-bold shadow-lg hover:shadow-gray-800/50 dark:shadow-gray-200/50"
+                      className="px-5 py-2.5 bg-black dark:bg-white dark:from-gray-200 dark:to-gray-100 hover:from-gray-900 hover:to-black dark:hover:from-gray-100 dark:hover:to-white text-white rounded-xl transition-all duration-300 transform hover:scale-105 text-sm font-bold shadow-lg hover:shadow-gray-800/50 dark:shadow-gray-200/50"
                     >
                       🗑️ Delete
                     </button>
@@ -212,7 +212,7 @@ export default function Expenses() {
 
         {sortedExpenses.length > 0 && (
           <div className="mt-8 pt-6 border-t-2 border-gray-200 dark:border-gray-600 animate-fadeIn">
-            <div className="flex justify-between items-center bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl">
+            <div className="flex justify-between items-center bg-black dark:bg-white dark:from-gray-800 dark:to-gray-700 p-6 rounded-2xl">
               <span className="text-gray-700 dark:text-gray-300 font-bold text-lg">
                 💸 Total Expenses ({sortedExpenses.length}):
               </span>
