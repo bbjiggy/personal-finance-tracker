@@ -47,7 +47,7 @@ export default function Income() {
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as 'date' | 'amount')}
             className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white"
-          />
+          >
             <option value="date">Sort by Date</option>
             <option value="amount">Sort by Amount</option>
           </select>
