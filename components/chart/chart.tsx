@@ -14,7 +14,7 @@ import {
   Legend,
   ArcElement
 } from 'chart.js';
-import { Bar, Doughnut } from 'react-chartjs-2';
+import { Bar, Doughnut, Pie } from 'react-chartjs-2';
 
 ChartJS.register(
   CategoryScale,
@@ -27,6 +27,7 @@ ChartJS.register(
 );
 
 type TimeFrame = 'daily' | 'weekly' | 'monthly' | 'yearly';
+type ChartView = 'overview' | 'categories';
 
 export default function Chart() {
   const allExpenses = useSelector((state: RootState) => state.user.expense);
@@ -34,6 +35,7 @@ export default function Chart() {
   const [isOpen, setOpen] = useState(false);
   const [modalType, setModalType] = useState<'expense' | 'income'>('expense');
   const [timeFrame, setTimeFrame] = useState<TimeFrame>('monthly');
+  const [chartView, setChartView] = useState<ChartView>('overview');
 
   const { expenseData, incomeData, labels } = useMemo(() => {
     const now = new Date();
@@ -91,6 +93,35 @@ export default function Chart() {
   const totalIncome = allIncomes.reduce((sum, t) => sum + t.price, 0);
   const balance = totalIncome - totalExpense;
 
+  // Category breakdown data
+  const categoryData = useMemo(() => {
+    const expenseByCategory = new Map<string, number>();
+    const incomeByCategory = new Map<string, number>();
+
+    allExpenses.forEach(expense => {
+      const current = expenseByCategory.get(expense.category) || 0;
+      expenseByCategory.set(expense.category, current + expense.price);
+    });
+
+    allIncomes.forEach(income => {
+      const current = incomeByCategory.get(income.category) || 0;
+      incomeByCategory.set(income.category, current + income.price);
+    });
+
+    const expenseCategories = Array.from(expenseByCategory.keys());
+    const expenseAmounts = expenseCategories.map(cat => expenseByCategory.get(cat) || 0);
+
+    const incomeCategories = Array.from(incomeByCategory.keys());
+    const incomeAmounts = incomeCategories.map(cat => incomeByCategory.get(cat) || 0);
+
+    return {
+      expenseCategories,
+      expenseAmounts,
+      incomeCategories,
+      incomeAmounts
+    };
+  }, [allExpenses, allIncomes]);
+
   const barChartData = {
     labels,
     datasets: [
@@ -117,6 +148,43 @@ export default function Chart() {
       data: [totalExpense, totalIncome],
       backgroundColor: ['rgba(239, 68, 68, 0.7)', 'rgba(34, 197, 94, 0.7)'],
       borderColor: ['rgb(239, 68, 68)', 'rgb(34, 197, 94)'],
+      borderWidth: 2
+    }]
+  };
+
+  const expenseCategoryData = {
+    labels: categoryData.expenseCategories,
+    datasets: [{
+      label: 'Expenses by Category',
+      data: categoryData.expenseAmounts,
+      backgroundColor: [
+        'rgba(239, 68, 68, 0.7)',
+        'rgba(249, 115, 22, 0.7)',
+        'rgba(234, 179, 8, 0.7)',
+        'rgba(168, 85, 247, 0.7)',
+        'rgba(236, 72, 153, 0.7)',
+        'rgba(59, 130, 246, 0.7)',
+        'rgba(16, 185, 129, 0.7)',
+        'rgba(139, 92, 246, 0.7)',
+        'rgba(251, 146, 60, 0.7)'
+      ],
+      borderWidth: 2
+    }]
+  };
+
+  const incomeCategoryData = {
+    labels: categoryData.incomeCategories,
+    datasets: [{
+      label: 'Income by Category',
+      data: categoryData.incomeAmounts,
+      backgroundColor: [
+        'rgba(34, 197, 94, 0.7)',
+        'rgba(16, 185, 129, 0.7)',
+        'rgba(5, 150, 105, 0.7)',
+        'rgba(6, 182, 212, 0.7)',
+        'rgba(14, 165, 233, 0.7)',
+        'rgba(99, 102, 241, 0.7)'
+      ],
       borderWidth: 2
     }]
   };
@@ -148,20 +216,48 @@ export default function Chart() {
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
           <h2 className="text-xl font-bold text-gray-800 dark:text-white">Statistics</h2>
+          
           <div className="flex flex-wrap gap-2">
-            {(['daily', 'weekly', 'monthly', 'yearly'] as TimeFrame[]).map((frame) => (
+            <div className="flex gap-2">
               <button
-                key={frame}
-                onClick={() => setTimeFrame(frame)}
-                className={`px-4 py-2 rounded-lg text-sm font-semibold capitalize transition-all ${
-                  timeFrame === frame
-                    ? 'bg-blue-500 text-white shadow-md'
+                onClick={() => setChartView('overview')}
+                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
+                  chartView === 'overview'
+                    ? 'bg-purple-500 text-white shadow-md'
                     : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
                 }`}
               >
-                {frame}
+                Overview
               </button>
-            ))}
+              <button
+                onClick={() => setChartView('categories')}
+                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
+                  chartView === 'categories'
+                    ? 'bg-purple-500 text-white shadow-md'
+                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                }`}
+              >
+                Categories
+              </button>
+            </div>
+            
+            {chartView === 'overview' && (
+              <div className="flex gap-2">
+                {(['daily', 'weekly', 'monthly', 'yearly'] as TimeFrame[]).map((frame) => (
+                  <button
+                    key={frame}
+                    onClick={() => setTimeFrame(frame)}
+                    className={`px-4 py-2 rounded-lg text-sm font-semibold capitalize transition-all ${
+                      timeFrame === frame
+                        ? 'bg-blue-500 text-white shadow-md'
+                        : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                    }`}
+                  >
+                    {frame}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
@@ -172,7 +268,7 @@ export default function Chart() {
               No transactions yet. Start tracking your finances!
             </p>
           </div>
-        ) : (
+        ) : chartView === 'overview' ? (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2">
               <Bar
@@ -203,6 +299,51 @@ export default function Chart() {
                   }}
                 />
               </div>
+            </div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="flex flex-col items-center">
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
+                Expenses by Category
+              </h3>
+              {categoryData.expenseCategories.length > 0 ? (
+                <div className="w-full max-w-sm">
+                  <Pie
+                    data={expenseCategoryData}
+                    options={{
+                      responsive: true,
+                      maintainAspectRatio: true,
+                      plugins: {
+                        legend: { position: 'bottom' }
+                      }
+                    }}
+                  />
+                </div>
+              ) : (
+                <p className="text-gray-500 dark:text-gray-400">No expense data</p>
+              )}
+            </div>
+            <div className="flex flex-col items-center">
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
+                Income by Category
+              </h3>
+              {categoryData.incomeCategories.length > 0 ? (
+                <div className="w-full max-w-sm">
+                  <Pie
+                    data={incomeCategoryData}
+                    options={{
+                      responsive: true,
+                      maintainAspectRatio: true,
+                      plugins: {
+                        legend: { position: 'bottom' }
+                      }
+                    }}
+                  />
+                </div>
+              ) : (
+                <p className="text-gray-500 dark:text-gray-400">No income data</p>
+              )}
             </div>
           </div>
         )}
