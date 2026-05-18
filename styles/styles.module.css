@@ -1,0 +1,30 @@
+/* Legacy styles - kept for compatibility */
+.current {
+  border-image: linear-gradient(to right, #d8d4d4, #d8d4d4) 0 0 1 0;
+  border-width: 2px;
+  @apply cursor-pointer font-bold;
+}
+
+.text {
+  @apply justify-center items-center p-[10px_5px] cursor-pointer font-bold;
+}
+
+.modal {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out;
+}
