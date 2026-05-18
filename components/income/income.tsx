@@ -188,7 +188,7 @@ export default function Income() {
                   </button>
                   <button
                     onClick={() => handleDelete(income.id)}
-                    className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors text-sm font-semibold"
+                    className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors text-sm font-semibold"
                   >
                     Delete
                   </button>
