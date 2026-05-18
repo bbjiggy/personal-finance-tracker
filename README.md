@@ -1,18 +1,48 @@
 # 💰 Personal Finance Tracker
 
-A modern, responsive personal finance tracking application built with Next.js, React, Redux, and Chart.js.
+A modern, feature-rich personal finance tracking application built with Next.js, React, Redux, and Chart.js.
 
 ## ✨ Features
 
-- **📊 Visual Analytics**: Interactive bar and doughnut charts to visualize your financial data
-- **💸 Expense Tracking**: Record and manage all your expenses with detailed information
-- **💵 Income Tracking**: Keep track of all income sources
-- **📱 Fully Responsive**: Works seamlessly on desktop, tablet, and mobile devices
-- **🌓 Dark Mode Support**: Automatic dark mode based on system preferences
-- **🔍 Search & Filter**: Easily find transactions with search and sort functionality
-- **💾 Persistent Storage**: Data is saved locally using Redux Persist
-- **📈 Multiple Time Frames**: View statistics by day, week, month, or year
-- **🎨 Modern UI**: Clean, intuitive interface with smooth animations
+### 📊 Visual Analytics
+
+- Interactive bar charts for income vs expense comparison
+- Doughnut charts for overall financial distribution
+- Pie charts for category-based expense and income breakdown
+- Multiple time frames (daily, weekly, monthly, yearly)
+- Toggle between overview and category views
+
+### 💸 Expense & Income Tracking
+
+- Record and manage all transactions with detailed information
+- **Categories**: Organize expenses (Food & Dining, Transportation, Shopping, etc.) and income (Salary, Freelance, Investment, etc.)
+- **Tags**: Add custom tags for better organization and searchability
+- **Edit Transactions**: Modify existing transactions anytime
+- **Date Range Filtering**: Filter transactions by custom date ranges
+- **Search & Sort**: Find transactions by title, description, or tags
+- **Recurring Transactions**: Set up daily, weekly, monthly, or yearly recurring transactions
+
+### 💰 Budget Management
+
+- Set monthly budgets for each expense category
+- Visual progress bars showing budget utilization
+- Color-coded warnings (green, yellow, red) based on spending
+- Track budget vs actual spending in real-time
+- Edit or delete budgets as needed
+
+### 📥 Data Export
+
+- Export all transactions to CSV format
+- Includes all transaction details (date, title, category, amount, tags, description)
+- Easy data backup and analysis in spreadsheet applications
+
+### 🎨 User Experience
+
+- **Fully Responsive**: Works seamlessly on desktop, tablet, and mobile devices
+- **Dark Mode Support**: Automatic dark mode based on system preferences
+- **Persistent Storage**: Data saved locally using Redux Persist with automatic migration
+- **Modern UI**: Clean, intuitive interface with smooth animations
+- **Form Validation**: Comprehensive validation with helpful error messages
 
 ## 🚀 Getting Started
 
@@ -26,8 +56,8 @@ A modern, responsive personal finance tracking application built with Next.js, R
 1. Clone the repository:
 
 ```bash
-git clone <your-repo-url>
-cd expense-tracking
+git clone https://github.com/bbjiggy/personal-finance-tracker.git
+cd personal-finance-tracker
 ```
 
 2. Install dependencies:
@@ -49,7 +79,7 @@ npm run dev
 - **Next.js 15** - React framework for production
 - **React 18** - UI library
 - **Redux Toolkit** - State management
-- **Redux Persist** - Local storage persistence
+- **Redux Persist** - Local storage persistence with migrations
 - **Chart.js** - Data visualization
 - **Tailwind CSS** - Utility-first CSS framework
 - **TypeScript** - Type safety
@@ -61,24 +91,47 @@ npm run dev
 1. Click "Add Expense" or "Add Income" button
 2. Fill in the transaction details:
    - Title (required)
+   - Category (required)
    - Amount (required)
    - Date (required)
+   - Tags (optional, comma-separated)
    - Description (optional)
+   - Recurring (optional, with frequency selection)
 3. Click "Create" to save
+
+### Editing Transactions
+
+1. Click the "Edit" button on any transaction
+2. Modify the details as needed
+3. Click "Update" to save changes
+
+### Managing Budgets
+
+1. Navigate to the "Budget" tab
+2. Click "Add Budget"
+3. Select category, set amount, and choose month
+4. Monitor spending with visual progress bars
+5. Edit or delete budgets as needed
 
 ### Viewing Statistics
 
-- Switch between different time frames (Daily, Weekly, Monthly, Yearly)
-- View bar chart for expense vs income comparison
-- Check doughnut chart for overall distribution
-- See summary cards for totals and balance
+- Switch between "Overview" and "Categories" chart views
+- In Overview: Select time frames (Daily, Weekly, Monthly, Yearly)
+- In Categories: View pie charts for expense and income distribution
+- Check summary cards for totals and balance
 
-### Managing Transactions
+### Filtering & Searching
 
-- Use the search bar to find specific transactions
+- Use the search bar to find transactions by title, description, or tags
+- Filter by category using the dropdown
+- Set date ranges to view transactions within specific periods
 - Sort by date or amount
-- Delete transactions with the delete button
-- Switch between Expenses and Income tabs
+
+### Exporting Data
+
+- Click the "Export to CSV" button
+- All transactions (expenses and income) will be downloaded
+- File includes: Date, Title, Category, Amount, Type, Description, Tags
 
 ### Customizing Your Profile
 
@@ -102,20 +155,34 @@ The application is fully responsive and optimized for:
 - Real-time balance calculation
 - Color-coded summary cards
 - Interactive charts with multiple views
+- Quick access to add transactions
 
 ### Transaction Management
 
-- Add, view, and delete transactions
+- Add, edit, view, and delete transactions
+- Category-based organization
+- Tag system for flexible categorization
 - Search and filter capabilities
 - Sort by date or amount
-- Detailed transaction cards
+- Date range filtering
+- Detailed transaction cards with all information
+
+### Budget Planning
+
+- Category-based budget setting
+- Monthly budget tracking
+- Visual progress indicators
+- Over-budget warnings
+- Budget vs actual comparison
 
 ### Data Visualization
 
 - Bar charts for comparative analysis
 - Doughnut charts for distribution
+- Pie charts for category breakdown
 - Multiple time frame options
 - Responsive chart sizing
+- Toggle between different views
 
 ## 🔧 Scripts
 
@@ -136,9 +203,12 @@ Contributions, issues, and feature requests are welcome!
 
 ## 💡 Future Enhancements
 
-- Export data to CSV/PDF
-- Budget planning and alerts
-- Category-based expense tracking
-- Recurring transactions
 - Multi-currency support
 - Cloud sync across devices
+- Budget alerts and notifications
+- Savings goals tracking
+- Bill reminders
+- Receipt photo attachments
+- Advanced analytics and insights
+- Custom category creation
+- Shared budgets for families
